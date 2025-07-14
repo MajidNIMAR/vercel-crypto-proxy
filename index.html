@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -34,7 +33,7 @@
     const coins = ['btc', 'xlm'];
     const names = { btc: 'Bitcoin (BTC)', xlm: 'Stellar (XLM)' };
     coins.forEach(async (coin) => {
-      const res = await fetch(`https://vercel-crypto-proxy.vercel.app/api/${coin}`);
+      const res = await fetch(`/api/${coin}`);
       const data = await res.json();
       const points = data.map(([t, v]) => ({ t: new Date(t), y: v }));
       const prices = points.map(p => p.y);

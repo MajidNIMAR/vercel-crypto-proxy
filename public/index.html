@@ -1,74 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Crypto Tracker (BTC & XLM)</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #111;
-      color: #fff;
-      margin: 0;
-      padding: 2rem;
-    }
-    .crypto {
-      border: 1px solid #444;
-      border-radius: 10px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      background-color: #1a1a1a;
-    }
-    canvas {
-      max-width: 100%;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Invest Plus</title>
 </head>
 <body>
-  <h1>📊 Crypto Tracker (BTC & XLM)</h1>
-  <div id="btc" class="crypto"></div>
-  <div id="xlm" class="crypto"></div>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    const coins = ['btc', 'xlm'];
-    const names = { btc: 'Bitcoin (BTC)', xlm: 'Stellar (XLM)' };
-    coins.forEach(async (coin) => {
-      const res = await fetch(`/api/${coin}`);
-      const data = await res.json();
-      const points = data.map(([t, v]) => ({ t: new Date(t), y: v }));
-      const prices = points.map(p => p.y);
-      const change = ((prices[prices.length - 1] - prices[0]) / prices[0] * 100).toFixed(2);
-      const min = Math.min(...prices);
-      const max = Math.max(...prices);
-      const lowestTime = points.find(p => p.y === min).t;
-      const highestTime = points.find(p => p.y === max).t;
-      const container = document.getElementById(coin);
-      container.innerHTML = `
-        <h2># ${names[coin]}</h2>
-        <p>📈 Variation mensuelle : ${change}%</p>
-        <p>🔻 Plus bas : ${min} à ${lowestTime.getHours()}h</p>
-        <p>📈 Plus haut : ${max} à ${highestTime.getHours()}h</p>
-        <canvas id="chart-${coin}"></canvas>
-      `;
-      new Chart(document.getElementById(`chart-${coin}`), {
-        type: 'line',
-        data: {
-          labels: points.map(p => p.t.toLocaleDateString()),
-          datasets: [{
-            label: names[coin],
-            data: prices,
-            borderWidth: 2,
-            fill: false,
-          }]
-        },
-        options: {
-          scales: {
-            x: { display: true },
-            y: { display: true }
-          }
-        }
-      });
-    });
-  </script>
+  <h1>Bienvenue sur Invest Plus 🚀</h1>
+  <p>Déploiement Vercel OK !</p>
 </body>
 </html>

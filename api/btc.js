@@ -1,3 +1,3 @@
-export default function handler(req, res) {
-  res.status(200).json({ name: "Bitcoin", symbol: "BTC" });
-}
+module.exports = (req, res) => {
+  res.json({ message: "Données BTC ici", time: new Date().toISOString() });
+};
